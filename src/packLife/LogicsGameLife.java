@@ -29,6 +29,12 @@ public class LogicsGameLife
         }
     }
 
+    public void setArrGrig(int [][] array)
+    {
+        masCell = array;
+    }
+
+
     public void inkrementIndex()
     {
         int tempMass[][] = new int [masCell.length][masCell[0].length];
@@ -49,6 +55,5 @@ public class LogicsGameLife
             }
         }
         masCell = tempMass;
-
     }
 }

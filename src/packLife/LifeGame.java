@@ -1,6 +1,8 @@
 package packLife;
 
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import javax.swing.*;
 import javax.swing.Timer;
 import java.awt.*;
@@ -26,7 +28,7 @@ public class LifeGame extends JFrame
     private JLabel labelX;
     private JLabel labelY;
     private GridMap gr;
-    private JButton start, reSizeGrig, stop, speed;
+    private JButton start, reSizeGrig, stop, speed, random;
     private LogicsGameLife lgl;
     //private java.util.Timer timer;
     private Timer timer;
@@ -41,77 +43,43 @@ public class LifeGame extends JFrame
         c = new GridBagConstraints();
         panelButon.setLayout(gbl);
         panelGrid.setLayout(gbl);
+        setLayout(gbl);
         //timer = new java.util.Timer();
 
 
-        this.addComponentListener(new ComponentAdapter()
-        {
-            @Override
-            public void componentResized(ComponentEvent e)
-            {
-                //super.componentResized(e);
-                JFrame frame = (LifeGame)e.getSource();
-                gr.resizee(frame.getWidth(), frame.getHeight());
-                System.out.println(gr.getWidth() + "___" + gr.getHeight());
-                System.out.println(panelButon.getWidth() + "___" + panelButon.getHeight());
-            }
-        });
+//        this.addComponentListener(new ComponentAdapter()
+//        {
+//            @Override
+//            public void componentResized(ComponentEvent e)
+//            {
+//                //super.componentResized(e);
+//                JFrame frame = (LifeGame)e.getSource();
+//                System.out.println(frame.getWidth() + "+++++++++++++++" + frame.getHeight());
+//                gr.resizee(frame.getWidth(), frame.getHeight());
+//                System.out.println(gr.getWidth() + "___--------------------------" + gr.getHeight());
+//                System.out.println(panelButon.getWidth() + "___++++++" + panelButon.getHeight());
+//            }
+//        });
+
+
         labelX = new JLabel("SizeX");
-        c.gridx = GridBagConstraints.RELATIVE;
-        c.gridy = 0;
-        c.gridheight = 1;
-        c.gridwidth  = 1;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        //c.fill   = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.0;
-        c.weighty = 0.0;
-        c.ipadx = 0;
-        c.ipady = 0;
-        c.insets = new Insets(5, 5, 0, 0);
-        panelButon.add(labelX, c);
+        panelButon.add(labelX, new GridBagConstraints(GridBagConstraints.RELATIVE, 0, 1, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE,
+                new Insets(5,5,0,0), 0, 0));
+
 
         sizeGridX = new JTextField("25",5);
+        panelButon.add(sizeGridX, new GridBagConstraints(GridBagConstraints.RELATIVE, 0, 1, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE,
+                new Insets(5,5,0,0), 0, 0));
 
-        c.gridx = GridBagConstraints.RELATIVE;
-        c.gridy = 0;
-        c.gridheight = 1;
-        c.gridwidth  = 1;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        //c.fill   = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.0;
-        c.weighty = 0.0;
-        c.ipadx = 0;
-        c.ipady = 0;
-        c.insets = new Insets(5, 5, 0, 0);
-        panelButon.add(sizeGridX, c);
 
         labelY = new JLabel("SizeY");
-        c.gridx = GridBagConstraints.RELATIVE;
-        c.gridy = 0;
-        c.gridheight = 1;
-        c.gridwidth  = 1;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        //c.fill   = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.0;
-        c.weighty = 0.0;
-        c.ipadx = 0;
-        c.ipady = 0;
-        c.insets = new Insets(5, 5, 0, 0);
-        panelButon.add(labelY, c);
+        panelButon.add(labelY, new GridBagConstraints(GridBagConstraints.RELATIVE, 0, 1, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE,
+                new Insets(5,5,0,0), 0, 0));
+
 
         sizeGridY = new JTextField("10",5);
-        c.gridx = GridBagConstraints.RELATIVE;
-        c.gridy = 0;
-        c.gridheight = 1;
-        c.gridwidth  = 1;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        //c.fill   = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.0;
-        c.weighty = 0.0;
-        c.ipadx = 0;
-        c.ipady = 0;
-        c.insets = new Insets(5, 5, 0, 0);
-        panelButon.add(sizeGridY, c);
+        panelButon.add(sizeGridY, new GridBagConstraints(GridBagConstraints.RELATIVE, 0, 1, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE,
+                new Insets(5,5,0,0), 0, 0));
 
 
         reSizeGrig = new JButton("Resize");
@@ -154,10 +122,26 @@ public class LifeGame extends JFrame
             public void actionPerformed(ActionEvent e)
             {
                 timerStart();
+                lgl.setArrGrig(gr.getArray());
                 start.setEnabled(false);
                 stop.setEnabled(true);
             }
         });
+
+        random = new JButton("Random");
+        panelButon.add(random,new GridBagConstraints(GridBagConstraints.RELATIVE,0,1,1,0,0,
+                GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,
+                new Insets(5,5,0,0), 0, 0));
+        random.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+            }
+        });
+
+
         speed = new JButton("Speed");
         panelButon.add(speed,new GridBagConstraints(GridBagConstraints.RELATIVE,0,1,1,0,0,
                 GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,
@@ -178,23 +162,21 @@ public class LifeGame extends JFrame
                 GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,
                 new Insets(5,5,0,0), 0, 0));
 
-        c.gridx = 0;
-        c.gridy = 1;
-        c.gridheight = GridBagConstraints.REMAINDER;
-        c.gridwidth  = GridBagConstraints.REMAINDER;
-        c.anchor = GridBagConstraints.NORTH;
-        c.fill   = GridBagConstraints.BOTH;
-        c.weightx = 1.0;
-        c.weighty = 1.0;
-        c.ipadx = 0;
-        c.ipady = 0;
-        c.insets = new Insets(5, 0, 0, 0);
+
         gr = new GridMap(Integer.parseInt(sizeGridX.getText()),Integer.parseInt(sizeGridY.getText()));
-        panelButon.add(gr,c);
-        add(panelButon);
+        panelButon.add(gr,new GridBagConstraints(0, 1, GridBagConstraints.REMAINDER, GridBagConstraints.REMAINDER, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.BOTH,
+                new Insets(5,0,0,0), 0, 0));
+
+
+        add(panelButon, new GridBagConstraints(GridBagConstraints.RELATIVE,GridBagConstraints.RELATIVE,GridBagConstraints.REMAINDER,GridBagConstraints.REMAINDER,1,1,
+                GridBagConstraints.NORTHWEST,GridBagConstraints.BOTH,
+                new Insets(0,0,0,0), 0, 0));
+
+
         lgl = new LogicsGameLife(Integer.parseInt(sizeGridX.getText()), Integer.parseInt(sizeGridY.getText()));
         gr.reWriteMas(lgl.getMasCell());
         setTimer();
+        clickMausGrid();
         //pack();
     }
 
@@ -228,7 +210,9 @@ public class LifeGame extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-
+                gr.setCoordinates(e.getX(),e.getY());
+                repaint();
+                //System.out.println( e.getX() + "KLICK" + e.getY() );
             }
 
             @Override

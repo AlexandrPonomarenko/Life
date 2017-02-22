@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.Graphics.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import static packLife.LifeGame.DEF_H;
 import static packLife.LifeGame.DEF_W;
@@ -16,17 +18,25 @@ public class GridMap extends JPanel
 {
     private int intX;
     private int intY;
-    private int witch = 700;
-    private int heigth = 400;
+    private int width = 684;
+    private int height = 326;
     private int stePY;
     private int stePX;
+    private int corX = 0;
+    private int corY = 0;
     private int [][] masCellFromLGL;
 
     public GridMap(int inX, int inY)
     {
         this.intX = inX;
         this.intY = inY;
-        /*this.addComponentListener(new ComponentAdapter()
+        setResizeComponentListener();
+        masCellFromLGL = new int [intX][intY];
+
+    }
+    private void setResizeComponentListener()
+    {
+        this.addComponentListener(new ComponentAdapter()
         {
             @Override
             public void componentResized(ComponentEvent e)
@@ -35,13 +45,12 @@ public class GridMap extends JPanel
                 GridMap frame = (GridMap)e.getSource();
 //                gr.resizee(frame.getWidth(), frame.getHeight());
 
-                witch = frame.getWidth();
-                heigth = frame.getHeight();
+                width = frame.getWidth();
+                height = frame.getHeight();
+                System.out.println(width + " " + height);
             }
-        });*/
-        masCellFromLGL = new int [intX][intY];
+        });
     }
-
 
     public void paint(Graphics g)
     {
@@ -56,21 +65,24 @@ public class GridMap extends JPanel
 
     private void dravGridLine(Graphics g, int stepX, int stepY)
     {
-        for(int i = 0; i <= witch; i += witch / stepX)
+        for(int i = 0; i <= width; i += width / stepX)
         {
-            g.drawLine(i,0, i, heigth);
+            g.drawLine(i,0, i, height);
         }
 
-        for(int i = 0; i <= heigth; i += heigth / stepY)
+        for(int i = 0; i <= height; i += height / stepY)
         {
-            g.drawLine(0,i, witch, i);
+            g.drawLine(0,i, width, i);
         }
     }
 
     public void resizee(int w, int h)
     {
-        witch = w;
-        heigth = h;
+        //witch = w;
+        //heigth = h
+
+        width = this.getWidth();
+        height = this.getHeight();
     }
 
     public void reStepXandY(int x, int y)
@@ -78,6 +90,7 @@ public class GridMap extends JPanel
         intX = x;
         intY = y;
     }
+
 
     public void reWriteMas(int [][] mas)
     {
@@ -92,8 +105,8 @@ public class GridMap extends JPanel
 
     public void drawCell(Graphics g)
     {
-        int cellWidth = witch / intX;
-        int cellHeight = heigth / intY;
+        int cellWidth = width / intX;
+        int cellHeight = height / intY;
 
         for(int i = 0;i < masCellFromLGL.length; i++)
         {
@@ -105,6 +118,42 @@ public class GridMap extends JPanel
                 }
             }
         }
+    }
+
+    public void setCoordinates(int x, int y)
+    {
+        corX = x;
+        corY = y;
+
+        int stepX = width / intX;
+        int stepY = height / intY;
+        int indexX = 0, indexY = 0;
+        boolean flagX = false;
+        boolean flagY = false;
+
+        for (int i = 0, i2 = 0; i < width; i+=stepX, i2++) {
+            if (i + stepX > x) {
+                indexX = i2;
+                flagX = true;
+                break;
+            }
+        }
+
+        for (int i = 0, i2 = 0; i < height; i+=stepY, i2++) {
+            if (i + stepY > y) {
+                indexY = i2;
+                flagY = true;
+                break;
+            }
+        }
+        if(flagX && flagY) {
+            masCellFromLGL[indexX][indexY] = 1;
+        }
+    }
+
+    public int [][] getArray()
+    {
+        return masCellFromLGL;
     }
 
 }
