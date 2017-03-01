@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91e85ffe-0a76-4071-ba60-a47a25cd1be1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/GridMap$1.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/GridMap$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/GridMap.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/GridMap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$1.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$2.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$3.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$4.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$5.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$6.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$7.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/LifeGame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Life/packLife/LogicsGameLife.class" afterPath="$PROJECT_DIR$/out/production/Life/packLife/LogicsGameLife.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/packLife/GridMap.java" afterPath="$PROJECT_DIR$/src/packLife/GridMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/packLife/LifeGame.java" afterPath="$PROJECT_DIR$/src/packLife/LifeGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/packLife/LogicsGameLife.java" afterPath="$PROJECT_DIR$/src/packLife/LogicsGameLife.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,11 +21,11 @@
     <favorites_list name="Life" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="GridMap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/packLife/GridMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="814">
+            <state relative-caret-position="2941">
               <caret line="182" column="46" lean-forward="false" selection-start-line="182" selection-start-column="46" selection-end-line="182" selection-end-column="46" />
               <folding />
             </state>
@@ -48,8 +35,8 @@
       <file leaf-file-name="LifeGame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/packLife/LifeGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1311">
-              <caret line="219" column="30" lean-forward="false" selection-start-line="219" selection-start-column="30" selection-end-line="219" selection-end-column="30" />
+            <state relative-caret-position="671">
+              <caret line="251" column="5" lean-forward="false" selection-start-line="251" selection-start-column="5" selection-end-line="251" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -58,7 +45,7 @@
       <file leaf-file-name="LogicsGameLife.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/packLife/LogicsGameLife.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
+            <state relative-caret-position="2567">
               <caret line="155" column="24" lean-forward="false" selection-start-line="155" selection-start-column="24" selection-end-line="155" selection-end-column="24" />
               <folding />
             </state>
@@ -416,7 +403,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1364" height="726" extended-state="0" />
+    <frame x="1" y="1" width="1364" height="726" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -428,7 +415,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33873582" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33873582" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -799,7 +786,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/packLife/LogicsGameLife.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
+        <state relative-caret-position="2567">
           <caret line="155" column="24" lean-forward="false" selection-start-line="155" selection-start-column="24" selection-end-line="155" selection-end-column="24" />
           <folding />
         </state>
@@ -807,7 +794,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/packLife/GridMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
+        <state relative-caret-position="2941">
           <caret line="182" column="46" lean-forward="false" selection-start-line="182" selection-start-column="46" selection-end-line="182" selection-end-column="46" />
           <folding />
         </state>
@@ -815,8 +802,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/packLife/LifeGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1311">
-          <caret line="219" column="30" lean-forward="false" selection-start-line="219" selection-start-column="30" selection-end-line="219" selection-end-column="30" />
+        <state relative-caret-position="671">
+          <caret line="251" column="5" lean-forward="false" selection-start-line="251" selection-start-column="5" selection-end-line="251" selection-end-column="5" />
           <folding />
         </state>
       </provider>

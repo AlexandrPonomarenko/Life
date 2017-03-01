@@ -31,6 +31,7 @@ public class LifeGame extends JFrame
     private JButton start, reSizeGrig, stop, clear, random;
     private LogicsGameLife lgl;
     private Timer timer;
+    private boolean flag = true;
 
 
     public LifeGame()
@@ -93,6 +94,9 @@ public class LifeGame extends JFrame
                 timerStop();
                 start.setEnabled(true);
                 stop.setEnabled(false);
+                random.setEnabled(true);
+                clear.setEnabled(true);
+                flag = true;
             }
         });
         stop.setEnabled(false);
@@ -109,7 +113,10 @@ public class LifeGame extends JFrame
                 timerStart();
                 lgl.setArrGrig(gr.getArray());
                 start.setEnabled(false);
+                random.setEnabled(false);
                 stop.setEnabled(true);
+                clear.setEnabled(false);
+                flag = false;
             }
         });
 
@@ -209,17 +216,17 @@ public class LifeGame extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                if(e.getButton() == MouseEvent.BUTTON1)
+                if(flag)
                 {
-                    gr.setCoordinates(e.getX(),e.getY());
-                    repaint();
-                    clear.setEnabled(true);
-                }else if(e.getButton() == MouseEvent.BUTTON3)
-                {
-                    gr.deleteCellGrid(e.getX(),e.getY());
-                    repaint();
+                    if (e.getButton() == MouseEvent.BUTTON1) {
+                        gr.setCoordinates(e.getX(), e.getY());
+                        repaint();
+                        clear.setEnabled(true);
+                    } else if (e.getButton() == MouseEvent.BUTTON3) {
+                        gr.deleteCellGrid(e.getX(), e.getY());
+                        repaint();
+                    }
                 }
-
             }
 
             @Override
