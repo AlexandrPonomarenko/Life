@@ -15,7 +15,7 @@ public class LifeGame extends JFrame
     public static final int DEF_H = 400;
     private int standartX = 10;
     private int standartY = 10;
-    private int timerSpeed = 1000;
+    private int timerSpeed = 200;
     private String textFildX;
     private String textFildY;
     private GridBagLayout gbl;
@@ -28,9 +28,8 @@ public class LifeGame extends JFrame
     private JLabel labelX;
     private JLabel labelY;
     private GridMap gr;
-    private JButton start, reSizeGrig, stop, speed, random;
+    private JButton start, reSizeGrig, stop, clear, random;
     private LogicsGameLife lgl;
-    //private java.util.Timer timer;
     private Timer timer;
 
 
@@ -44,22 +43,6 @@ public class LifeGame extends JFrame
         panelButon.setLayout(gbl);
         panelGrid.setLayout(gbl);
         setLayout(gbl);
-        //timer = new java.util.Timer();
-
-
-//        this.addComponentListener(new ComponentAdapter()
-//        {
-//            @Override
-//            public void componentResized(ComponentEvent e)
-//            {
-//                //super.componentResized(e);
-//                JFrame frame = (LifeGame)e.getSource();
-//                System.out.println(frame.getWidth() + "+++++++++++++++" + frame.getHeight());
-//                gr.resizee(frame.getWidth(), frame.getHeight());
-//                System.out.println(gr.getWidth() + "___--------------------------" + gr.getHeight());
-//                System.out.println(panelButon.getWidth() + "___++++++" + panelButon.getHeight());
-//            }
-//        });
 
 
         labelX = new JLabel("SizeX");
@@ -77,7 +60,7 @@ public class LifeGame extends JFrame
                 new Insets(5,5,0,0), 0, 0));
 
 
-        sizeGridY = new JTextField("10",5);
+        sizeGridY = new JTextField("25",5);
         panelButon.add(sizeGridY, new GridBagConstraints(GridBagConstraints.RELATIVE, 0, 1, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE,
                 new Insets(5,5,0,0), 0, 0));
 
@@ -93,11 +76,12 @@ public class LifeGame extends JFrame
             {
                 reSizeGrig = (JButton)e.getSource();
                 gr.reStepXandY(Integer.parseInt(sizeGridX.getText()), Integer.parseInt(sizeGridY.getText()));
+                lgl.setResizeArray(Integer.parseInt(sizeGridX.getText()), Integer.parseInt(sizeGridY.getText()));
                 repaint();
             }
         });
 
-        stop = new JButton("Stop");
+        stop = new JButton("Pause");
         panelButon.add( stop, new GridBagConstraints(GridBagConstraints.RELATIVE,0,1,1,0,0,
                 GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,
                 new Insets(5,5,0,0), 0, 0));
@@ -111,8 +95,9 @@ public class LifeGame extends JFrame
                 stop.setEnabled(false);
             }
         });
+        stop.setEnabled(false);
 
-        start = new JButton("Start");
+        start = new JButton("Play");
         panelButon.add( start, new GridBagConstraints(GridBagConstraints.RELATIVE,0,1,1,0,0,
                 GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,
                 new Insets(5,5,0,0), 0, 0));
@@ -137,41 +122,55 @@ public class LifeGame extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-
+                random = (JButton)e.getSource();
+                lgl.setRandomCell();
+                gr.reWriteMas(lgl.getMasCell());
+                repaint();
             }
         });
 
 
-        speed = new JButton("Speed");
-        panelButon.add(speed,new GridBagConstraints(GridBagConstraints.RELATIVE,0,1,1,0,0,
+        clear = new JButton("Clear");
+        panelButon.add(clear,new GridBagConstraints(GridBagConstraints.RELATIVE,0,1,1,0,0,
                 GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,
                 new Insets(5,5,0,0), 0, 0));
-        speed.addActionListener(new ActionListener()
+        clear.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                speed = (JButton)e.getSource();
-                timer.setDelay(timerSpeed = Integer.parseInt(textSpeed.getText()));
+                clear = (JButton)e.getSource();
+                lgl.setArrGrig(gr.getArray());
+                lgl.inicialization();
+                repaint();
+//                timer.setDelay(timerSpeed = Integer.parseInt(textSpeed.getText()));
             }
         });
+        clear.setEnabled(false);
 
-
-        textSpeed = new JTextField("1000", 5);
+        textSpeed = new JTextField("200", 5);
         panelButon.add(textSpeed,new GridBagConstraints(GridBagConstraints.RELATIVE,0,1,1,0,0,
                 GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,
                 new Insets(5,5,0,0), 0, 0));
-
+        textSpeed.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if(e.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    timer.setDelay(timerSpeed = Integer.parseInt(textSpeed.getText()));
+                    //textSpeed.setText(textSpeed.getText());
+                }
+            }
+        });
 
         gr = new GridMap(Integer.parseInt(sizeGridX.getText()),Integer.parseInt(sizeGridY.getText()));
         panelButon.add(gr,new GridBagConstraints(0, 1, GridBagConstraints.REMAINDER, GridBagConstraints.REMAINDER, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.BOTH,
                 new Insets(5,0,0,0), 0, 0));
 
-
         add(panelButon, new GridBagConstraints(GridBagConstraints.RELATIVE,GridBagConstraints.RELATIVE,GridBagConstraints.REMAINDER,GridBagConstraints.REMAINDER,1,1,
                 GridBagConstraints.NORTHWEST,GridBagConstraints.BOTH,
                 new Insets(0,0,0,0), 0, 0));
-
 
         lgl = new LogicsGameLife(Integer.parseInt(sizeGridX.getText()), Integer.parseInt(sizeGridY.getText()));
         gr.reWriteMas(lgl.getMasCell());
@@ -210,9 +209,17 @@ public class LifeGame extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                gr.setCoordinates(e.getX(),e.getY());
-                repaint();
-                //System.out.println( e.getX() + "KLICK" + e.getY() );
+                if(e.getButton() == MouseEvent.BUTTON1)
+                {
+                    gr.setCoordinates(e.getX(),e.getY());
+                    repaint();
+                    clear.setEnabled(true);
+                }else if(e.getButton() == MouseEvent.BUTTON3)
+                {
+                    gr.deleteCellGrid(e.getX(),e.getY());
+                    repaint();
+                }
+
             }
 
             @Override

@@ -20,8 +20,6 @@ public class GridMap extends JPanel
     private int intY;
     private int width = 684;
     private int height = 326;
-    private int stePY;
-    private int stePX;
     private int corX = 0;
     private int corY = 0;
     private int [][] masCellFromLGL;
@@ -32,7 +30,6 @@ public class GridMap extends JPanel
         this.intY = inY;
         setResizeComponentListener();
         masCellFromLGL = new int [intX][intY];
-
     }
     private void setResizeComponentListener()
     {
@@ -54,13 +51,14 @@ public class GridMap extends JPanel
 
     public void paint(Graphics g)
     {
-        g.setColor(new Color(100 ,25,255));
-        drawCell(g);
-        g.setColor(new Color(233,200,42));
-        dravGridLine(g, intX, intY);
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillRect(0,0,width,height);
+        g.setColor(Color.CYAN);
         //g.setColor(new Color(100 ,25,255));
-        //drawCell(g);
-
+        drawCell(g);
+        g.setColor(Color.BLACK);
+        //g.setColor(new Color(233,200,42));
+        dravGridLine(g, intX, intY);
     }
 
     private void dravGridLine(Graphics g, int stepX, int stepY)
@@ -78,9 +76,6 @@ public class GridMap extends JPanel
 
     public void resizee(int w, int h)
     {
-        //witch = w;
-        //heigth = h
-
         width = this.getWidth();
         height = this.getHeight();
     }
@@ -131,7 +126,8 @@ public class GridMap extends JPanel
         boolean flagX = false;
         boolean flagY = false;
 
-        for (int i = 0, i2 = 0; i < width; i+=stepX, i2++) {
+        for (int i = 0, i2 = 0; i < width; i+=stepX, i2++)
+        {
             if (i + stepX > x) {
                 indexX = i2;
                 flagX = true;
@@ -139,7 +135,8 @@ public class GridMap extends JPanel
             }
         }
 
-        for (int i = 0, i2 = 0; i < height; i+=stepY, i2++) {
+        for (int i = 0, i2 = 0; i < height; i+=stepY, i2++)
+        {
             if (i + stepY > y) {
                 indexY = i2;
                 flagY = true;
@@ -148,6 +145,42 @@ public class GridMap extends JPanel
         }
         if(flagX && flagY) {
             masCellFromLGL[indexX][indexY] = 1;
+        }
+    }
+
+    public void deleteCellGrid(int x, int y)
+    {
+        corX = x;
+        corY = y;
+
+        int stepX = width / intX;
+        int stepY = height / intY;
+        int indexX = 0, indexY = 0;
+        boolean flagX = false;
+        boolean flagY = false;
+
+        for (int i = 0, i2 = 0; i < width; i+=stepX, i2++)
+        {
+            if (i + stepX > x)
+            {
+                indexX = i2;
+                flagX = true;
+                break;
+            }
+        }
+
+        for (int i = 0, i2 = 0; i < height; i+=stepY, i2++)
+        {
+            if (i + stepY > y)
+            {
+                indexY = i2;
+                flagY = true;
+                break;
+            }
+        }
+        if(flagX && flagY)
+        {
+            masCellFromLGL[indexX][indexY] = 0;
         }
     }
 
