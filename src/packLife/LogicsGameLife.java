@@ -111,42 +111,34 @@ public class LogicsGameLife
         int nabours = 0;
         if(masCell[getX(x + 1)][getY(y)] == 1)
         {
-            // in right
             nabours ++;
         }
         if(masCell[getX(x - 1)][getY(y)] == 1)
         {
-//            in left
             nabours ++;
         }
         if(masCell[getX(x)][getY(y + 1)] == 1)
         {
-            //bottom cell
             nabours++;
         }
         if(masCell[getX(x)][getY(y - 1)] == 1)
         {
-            // top cell
             nabours++;
         }
         if(masCell[getX(x - 1)][getY(y - 1)] == 1)
         {
-            // top left cell
             nabours++;
         }
         if(masCell[getX(x + 1)][getY(y - 1)] == 1)
         {
-            //top right
             nabours++;
         }
         if(masCell[getX(x - 1)][getY(y + 1)] == 1)
         {
-            // bottom left
             nabours++;
         }
         if(masCell[getX(x + 1)][getY(y + 1)] == 1)
         {
-            // bottom right
             nabours++;
         }
         return nabours;

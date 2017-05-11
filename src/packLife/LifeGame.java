@@ -7,7 +7,6 @@ import javax.swing.*;
 import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 
 public class LifeGame extends JFrame
 {
@@ -150,7 +149,6 @@ public class LifeGame extends JFrame
                 lgl.setArrGrig(gr.getArray());
                 lgl.inicialization();
                 repaint();
-//                timer.setDelay(timerSpeed = Integer.parseInt(textSpeed.getText()));
             }
         });
         clear.setEnabled(false);
@@ -166,7 +164,6 @@ public class LifeGame extends JFrame
                 if(e.getKeyCode() == KeyEvent.VK_ENTER)
                 {
                     timer.setDelay(timerSpeed = Integer.parseInt(textSpeed.getText()));
-                    //textSpeed.setText(textSpeed.getText());
                 }
             }
         });
@@ -183,7 +180,6 @@ public class LifeGame extends JFrame
         gr.reWriteMas(lgl.getMasCell());
         setTimer();
         clickMausGrid();
-        //pack();
     }
 
     private void setTimer()
@@ -197,7 +193,6 @@ public class LifeGame extends JFrame
                 gr.reWriteMas(lgl.getMasCell());
             }
         });
-        //timer.start();
     }
 
     private void timerStart()

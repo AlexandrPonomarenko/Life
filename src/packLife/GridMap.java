@@ -38,9 +38,7 @@ public class GridMap extends JPanel
             @Override
             public void componentResized(ComponentEvent e)
             {
-                //super.componentResized(e);
                 GridMap frame = (GridMap)e.getSource();
-//                gr.resizee(frame.getWidth(), frame.getHeight());
 
                 width = frame.getWidth();
                 height = frame.getHeight();
@@ -54,10 +52,8 @@ public class GridMap extends JPanel
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(0,0,width,height);
         g.setColor(Color.CYAN);
-        //g.setColor(new Color(100 ,25,255));
         drawCell(g);
         g.setColor(Color.BLACK);
-        //g.setColor(new Color(233,200,42));
         dravGridLine(g, intX, intY);
     }
 
